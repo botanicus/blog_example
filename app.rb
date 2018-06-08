@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -Ilib -rbundler/setup
+#!/usr/bin/env ruby -Iapp -Iapp/lib -rbundler/setup
 
 require 'import'
 registry = import('registry')

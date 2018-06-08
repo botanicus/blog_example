@@ -9,6 +9,7 @@ Dir.glob("#{route_dir}/*.rb").each do |path|
   router.register(import(path))
 end
 
+# TODO: Extract this as this is a library and rename the file to routes.rb.
 RouterApp = Class.new do
   extend Interfacer
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -Ilib -rbundler/setup -S rackup
+#!/usr/bin/env ruby -Iapp -Iapp/lib -rbundler/setup -S rackup
 
 require 'import'
 registry = import('registry')
