@@ -1,10 +1,10 @@
-Rendering = import('registry').Rendering
+Route, Rendering = import('registry').grab(:Route, :Rendering)
 
-class NotFoundRoute
+class NotFoundRoute < Route
   include Rendering
 
-  def call(env)
-    render({error: "Not found anything for #{env['PATH_INFO']}!"}, {status_code: 404})
+  def call
+    render 404, error: "Not found anything for #{env['PATH_INFO']}!"
   end
 end
 

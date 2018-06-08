@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/botanicus/simple-logger.git
+  revision: 76924fade72e9599f936ce90e235db44169b3830
+  specs:
+    simple-logger (0.1)
+      term-ansicolor
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -6,10 +13,14 @@ GEM
     interfacer (0.0.1)
       commonjs_modules (~> 0.0)
     method_source (0.9.0)
+    pg (1.0.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     rack (2.0.5)
+    term-ansicolor (1.6.0)
+      tins (~> 1.0)
+    tins (1.16.3)
 
 PLATFORMS
   ruby
@@ -17,8 +28,10 @@ PLATFORMS
 DEPENDENCIES
   commonjs_modules
   interfacer
+  pg
   pry
   rack
+  simple-logger!
 
 BUNDLED WITH
    1.16.1

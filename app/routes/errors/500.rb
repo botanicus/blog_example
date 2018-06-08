@@ -1,10 +1,10 @@
-Rendering = import('registry').Rendering
+Route, Rendering = import('registry').grab(:Route, :Rendering)
 
-class InternalServerErrorRoute
+class InternalServerErrorRoute < Route
   include Rendering
 
-  def call(env, error)
-    render({error: "Error #{error.class}!"}, {status_code: 500})
+  def call(error)
+    render 500, error: "Error #{error.class}!"
   end
 end
 

@@ -1,13 +1,11 @@
-Rendering = import('registry').Rendering
+Route, Rendering = import('registry').grab(:Route, :Rendering)
 
-class RootRoute
+class RootRoute < Route
   include Rendering
 
-  def self.match(env)
-    env['PATH_INFO'] == '/'
-  end
+  get '/'
 
-  def call(env)
+  def call
     render message: 'Hello world!'
   end
 end

@@ -1,4 +1,10 @@
+Interfacer, logger = import('registry').grab(:Interfacer, :logger)
+
 Router = Class.new do
+  extend Interfacer
+
+  attribute(:logger, :debug, :info) { logger }
+
   def route_list
     @route_list ||= Array.new
   end
@@ -33,6 +39,19 @@ Router = Class.new do
   attr_reader :error_route
   def register_error_route(route_class)
     @error_route = route_class
+  end
+  
+  def handle(env)
+    route_class = self.route(env)
+    route_class.call(env)
+  rescue => error
+    logger.fatal("#{error.class} #{error.message}\n#{error.backtrace.join("\n- ")}")
+    
+    unless self.error_route
+      raise "Error route not set."
+    end
+
+    self.error_route.call(env, error)
   end
 end
 
