@@ -36,18 +36,19 @@ def exports.store(table_name, data)
 end
 
 def exports.insert(table_name, data)
+  data = data.dup.tap { |data| data.delete(:id) }
   values = data.values.map { |value| "'#{value}'" }
-  result = DB.exec("INSERT into #{table_name} (#{data.keys.join(', ')}) VALUES (#{values.join(', ')})")
-  # result.status
+  result = DB.exec("INSERT into #{table_name} (#{data.keys.join(', ')}) VALUES (#{values.join(', ')}) RETURNING *")
+  result.each.to_a[0].transform_keys(&:to_sym)
 end
 
 def exports.update(table_name, id, data)
   set_data = data.reduce(Array.new) do |buffer, (key, value)|
-    buffer << "#{key} = '#{value}'"
+    key == :id ? buffer : buffer << "#{key} = '#{value}'"
   end.join(', ')
 
-  result = DB.exec("UPDATE #{table_name} SET #{set_data} WHERE id=#{id}")
-  # result.status
+  result = DB.exec("UPDATE #{table_name} SET #{set_data} WHERE id=#{id} RETURNING *")
+  result.each.to_a[0].transform_keys(&:to_sym)
 end
 
 def exports.delete(table_name, id)
@@ -55,8 +56,6 @@ def exports.delete(table_name, id)
   # result.status
 end
 
-#
-# data.store_create_table(:posts, title: 'varchar(256)')
 def exports.create_table(table_name, attributes)
   definition = attributes.map { |key, value| "#{key} #{value}" }.join(', ')
   result = DB.exec("CREATE table #{table_name} (#{definition})")

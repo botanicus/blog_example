@@ -29,7 +29,8 @@ class PostCreateRoute < ApplicationRoute
 
   def call
     post = Post.new(**request_data)
-    store.insert(:posts, post.data)
+    data = store.insert(:posts, post.data)
+    post.reload(**data)
     render 201, post.data # Without ID this way.
   rescue ArgumentError => error
     render 400, error: error.message
@@ -56,8 +57,8 @@ class PostUpdateRoute < ApplicationRoute
 
   def call(id:)
     post = Post.new(**request_data)
-    store.update(:posts, id, post.data)
-    render 200, post.data
+    data = store.update(:posts, id, post.data)
+    render 200, data
   rescue ArgumentError => error
     render 400, error: error.message
   end
@@ -72,8 +73,8 @@ class PostPatchRoute < ApplicationRoute
   def call(id:)
     data = store.retrieve(:posts, id)
     post = Post.new(data.merge(request_data))
-    store.update(:posts, id, post.data)
-    render 200, post.data
+    data = store.update(:posts, id, post.data)
+    render 200, data
   rescue ArgumentError => error
     render 400, error: error.message
   end
