@@ -80,4 +80,5 @@ class PostPatchRoute < ApplicationRoute
   end
 end
 
-export PostRoute, PostIndexRoute, PostCreateRoute, PostDeleteRoute, PostUpdateRoute, PostPatchRoute
+export PostRoute, PostIndexRoute, PostCreateRoute,
+       PostDeleteRoute, PostUpdateRoute, PostPatchRoute
