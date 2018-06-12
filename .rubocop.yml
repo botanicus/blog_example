@@ -1,3 +1,6 @@
+AllCops:
+  TargetRubyVersion: 2.5
+
 # list = posts.map { |post| post.title.strip }.
 #   select ...
 Layout/DotPosition:
@@ -12,6 +15,14 @@ Layout/ElseAlignment:
 Layout/EndAlignment:
   Enabled: no
 Layout/IndentationWidth:
+  Enabled: no
+Layout/FirstParameterIndentation:
+  Enabled: no
+Layout/AccessModifierIndentation:
+  Enabled: no
+Layout/AlignArray:
+  Enabled: no
+Layout/IndentArray:
   Enabled: no
 
 # Interfacer, Route, store = import('registry').
@@ -31,6 +42,11 @@ Layout/SpaceBeforeComment:
 # SupportedStylesForEmptyBraces: space, no_space
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
+
+# SupportedStyles: require_no_space, require_space
+# Do not change `-> (example) { ... }` to `->(example) {}`.
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
 
 # Enable `if id = params[:id]`.
 Lint/AssignmentInCondition:
@@ -72,9 +88,17 @@ Style/RedundantSelf:
 Style/Semicolon:
   Enabled: no
 
+# Do not change an empty method to a one-liner.
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
 # Prefer `[:a, :b, :c]` over `%i[a b c]`.
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+# Do not change `Proc.new` to `proc`.
+Style/Proc:
+  Enabled: no
 
 # Do not enforce one particular style of quotation.
 Style/StringLiterals:
