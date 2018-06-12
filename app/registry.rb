@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 export(:logger) do
   require 'simple-logger'
   SimpleLogger::Logger.new(STDOUT, auto_flush: true)

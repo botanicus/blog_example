@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Interfacer, router = import('registry').grab(:Interfacer, :router)
 
 RouterApp = Class.new do

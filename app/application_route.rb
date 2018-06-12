@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Interfacer, Route, store = import('registry').
   grab(:Interfacer, :Route, :data_store)
 

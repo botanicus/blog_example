@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post
   attr_reader :data
   def initialize(id: nil, title:, body:)#, author:, tags: Array.new)

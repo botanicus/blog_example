@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Interfacer, logger = import('registry').grab(:Interfacer, :logger)
 
 class Matcher

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Interfacer, data_store, Post = import('registry').grab(:Interfacer, :data_store, :Post)
 
 # Can I use actors and defer when doing pg.exec OR use pg.async_exec

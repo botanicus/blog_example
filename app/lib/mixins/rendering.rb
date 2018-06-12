@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Interfacer, json_encoder = import('registry').grab(:Interfacer, :json_encoder)
 
 Rendering = Module.new do

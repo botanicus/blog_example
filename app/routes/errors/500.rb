@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Route, Rendering = import('registry').grab(:Route, :Rendering)
 
 class InternalServerErrorRoute < Route

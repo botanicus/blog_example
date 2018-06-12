@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
 # To get going, we can just do `export { JSON }` and be done with it.

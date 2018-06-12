@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # TODO: raise NotFoundError if PG::NotFound
 ApplicationRoute, Rendering, Post = import('registry').grab(:ApplicationRoute, :Rendering, :Post)
 

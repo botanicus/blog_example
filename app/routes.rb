@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 logger, router = import('registry').grab(:logger, :empty_router)
 
 router.register_default(import('routes/errors/404'))

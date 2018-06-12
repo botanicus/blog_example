@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # TODO: Rename: this is not a generic data_store, this should be an adapter.
 
 # Examples:
