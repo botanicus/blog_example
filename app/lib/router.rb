@@ -18,9 +18,7 @@ Router = Class.new do
   # @api private
   def find(env)
     self.route_list.find do |route_class|
-      unless route_class.respond_to?(:match)
-        raise "Route #{route_class} has to have .match method!"
-      end
+      raise "Route #{route_class} has to have .match method!" unless route_class.respond_to?(:match)
 
       unless route_class.method(:match).parameters.length == 1
         raise "Method #{route_class}.match has to take env as its only argument!"
@@ -49,9 +47,7 @@ Router = Class.new do
   rescue => error
     logger.fatal("#{error.class} #{error.message}\n#{error.backtrace.join("\n- ")}")
 
-    unless self.error_route
-      raise "Error route not set."
-    end
+    raise "Error route not set." unless self.error_route
 
     self.error_route.call(env, error)
   end

@@ -60,9 +60,7 @@ Route = Class.new do
       route.call(*args)
     end
 
-    if return_value.is_a?(String)
-      return_value = [200, Hash.new, [return_value]]
-    end
+    return_value = [200, Hash.new, [return_value]] if return_value.is_a?(String)
 
     logger.debug("Rendering HTTP #{return_value[0]} -> #{return_value[2].join(', ')}")
 
