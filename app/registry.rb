@@ -29,7 +29,7 @@ export(:data_store) { import('adapters/pg_store') }
 object_dir = File.expand_path('app/objects')
 Dir.glob("#{object_dir}/*.rb").each do |path|
   object_path = path.sub("#{Dir.pwd}/", '')
-  object_name = path.sub(/^.+\/(.)(.+)\.rb$/) { "#{$1.upcase}#{$2}" }
+  object_name = path.sub(/^.+\/(.)(.+)\.rb$/) { "#{Regexp.last_match(1).upcase}#{Regexp.last_match(2)}" }
   export(object_name.to_sym) { import(object_path) }
 end
 
