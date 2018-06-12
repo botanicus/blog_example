@@ -45,9 +45,9 @@ def exports.insert(table_name, data)
 end
 
 def exports.update(table_name, id, data)
-  set_data = data.reduce(Array.new) do |buffer, (key, value)|
+  set_data = data.reduce(Array.new) { |buffer, (key, value)|
     key == :id ? buffer : buffer << "#{key} = '#{value}'"
-  end.join(', ')
+  }.join(', ')
 
   result = DB.exec("UPDATE #{table_name} SET #{set_data} WHERE id=#{id} RETURNING *")
   result.each.to_a[0].transform_keys(&:to_sym)

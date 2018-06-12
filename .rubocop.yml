@@ -24,6 +24,8 @@ Layout/AlignArray:
   Enabled: no
 Layout/IndentArray:
   Enabled: no
+Layout/IndentHash:
+  Enabled: no
 
 # Interfacer, Route, store = import('registry').
 #                            grab(:Interfacer, :Route, :data_store)
@@ -48,12 +50,18 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/SpaceInLambdaLiteral:
   EnforcedStyle: require_space
 
+  # Do not add an empty line around `private|protected`.
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: no
+
 # Enable `if id = params[:id]`.
 Lint/AssignmentInCondition:
   Enabled: no
 
 # Disable renaming unused variables to their `_var` versions.
 Lint/UnusedMethodArgument:
+  Enabled: no
+Lint/UnusedBlockArgument:
   Enabled: no
 
 # Disable warning about long blocks (i. e. `Class.new { ... lines }`).
@@ -65,6 +73,9 @@ Metrics/BlockLength:
 #
 # def initialize(id: nil, title:, body:)#, author:, tags: Array.new)
 Style/CommentedKeyword:
+  Enabled: no
+# @prompt.data# .merge(total: total_data[:total])
+Layout/LeadingCommentSpace:
   Enabled: no
 
 # Do not change Hash.new to {}. I happen to like it this way dammit!
@@ -95,9 +106,14 @@ Style/EmptyMethod:
 # Prefer `[:a, :b, :c]` over `%i[a b c]`.
 Style/SymbolArray:
   EnforcedStyle: brackets
+Style/WordArray:
+  Enabled: no
 
 # Do not change `Proc.new` to `proc`.
 Style/Proc:
+  Enabled: no
+
+Style/TernaryParentheses:
   Enabled: no
 
 # Do not enforce one particular style of quotation.
@@ -108,6 +124,45 @@ Style/StringLiterals:
 # The standard is 80, but I can fit 90 x 90 into a split screen.
 Metrics/LineLength:
   Max: 90
+
+Metrics/AbcSize:
+  Max: 43
+
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Max: 210
+
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 116
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 36
+
+# Configuration parameters: CountComments.
+Metrics/ModuleLength:
+  Max: 115
+
+# Configuration parameters: CountKeywordArgs.
+Metrics/ParameterLists:
+  Max: 11
+
+# TODO: This converts `block.call` to `yield`, but it leaves the `&block`
+#       in the arguments. Does it really help like this? It feels inconsistent.
+Performance/RedundantBlockCall:
+  Enabled: no
+
+# Configuration parameters: EnforcedStyle, ProceduralMethods, FunctionalMethods, IgnoredMethods.
+# SupportedStyles: line_count_based, semantic, braces_for_chaining
+# ProceduralMethods: benchmark, bm, bmbm, create, each_with_object, measure, new, realtime, tap, with_object
+# FunctionalMethods: let, let!, subject, watch
+# IgnoredMethods: lambda, proc, it
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
 
 # Project-specific.
 #
