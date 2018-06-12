@@ -5,7 +5,7 @@ Rendering = Module.new do
 
   attribute(:json_encoder, :generate) { json_encoder }
 
-  def render(status_code, content = '')
+  def render(status_code = 200, content)
     if content.is_a?(String)
       [status_code, Hash.new, [content]]
     else
@@ -16,3 +16,4 @@ Rendering = Module.new do
 end
 
 export { Rendering }
+

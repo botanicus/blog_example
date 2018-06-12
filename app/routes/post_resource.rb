@@ -58,7 +58,7 @@ class PostUpdateRoute < ApplicationRoute
   def call(id:)
     post = Post.new(**request_data)
     data = store.update(:posts, id, post.data)
-    render 200, data
+    render data
   rescue ArgumentError => error
     render 400, error: error.message
   end
@@ -74,7 +74,7 @@ class PostPatchRoute < ApplicationRoute
     data = store.retrieve(:posts, id)
     post = Post.new(data.merge(request_data))
     data = store.update(:posts, id, post.data)
-    render 200, data
+    render data
   rescue ArgumentError => error
     render 400, error: error.message
   end
