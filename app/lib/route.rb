@@ -78,7 +78,7 @@ Route = Class.new do
   end
 
   def call(*args)
-    raise NotImplementedError.new("Override in subclasses.")
+    raise NotImplementedError, "Override in subclasses."
   end
 end
 
