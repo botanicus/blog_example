@@ -6,7 +6,7 @@ RouterApp = Class.new do
   extend Interfacer
 
   attribute(:router, :handle) { router }
-  
+
   def call(env)
     router.handle(env)
   end

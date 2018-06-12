@@ -18,4 +18,3 @@ Rendering = Module.new do
 end
 
 export { Rendering }
-

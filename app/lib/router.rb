@@ -42,13 +42,13 @@ Router = Class.new do
   def register_error_route(route_class)
     @error_route = route_class
   end
-  
+
   def handle(env)
     route_class = self.route(env)
     route_class.call(env)
   rescue => error
     logger.fatal("#{error.class} #{error.message}\n#{error.backtrace.join("\n- ")}")
-    
+
     unless self.error_route
       raise "Error route not set."
     end
