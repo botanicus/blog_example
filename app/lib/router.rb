@@ -44,7 +44,7 @@ Router = Class.new do
   def handle(env)
     route_class = self.route(env)
     route_class.call(env)
-  rescue => error
+  rescue StandardError => error
     logger.fatal("#{error.class} #{error.message}\n#{error.backtrace.join("\n- ")}")
 
     raise "Error route not set." unless self.error_route
